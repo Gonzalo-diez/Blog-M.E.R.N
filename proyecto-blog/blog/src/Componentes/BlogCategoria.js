@@ -21,18 +21,32 @@ function BlogCategoria() {
     fetchBlogCategoria();
   }, [categoria])
 
+  if (blogs.length === 0) {
+    return (
+      <Container>
+        <h2 className="text-center mt-3">{categoria}</h2>
+        <p className="text-center mt-4">No hay blogs de esta categoría</p>
+      </Container>
+    );
+  }
+
   return (
     <Container>
-      <Row Row xs={1} md={2} lg={2} className="g-4">
-        <h2 className="text-center">{categoria}</h2>
+      <h2 className="text-center mt-3">{categoria}</h2>
+      <Row xs={1} md={2} lg={2} className="g-4">
         {blogs.map((blog) => (
-          <Col md={8} key={blog.id}>
+          <Col key={blog._id} className="mt-5">
             <section>
               <article>
-                <h3 className="text-center">{blog.nombre}</h3>
-                <img src={blog.imagen_url} alt={blog.nombre} className="img-fluid card-image blog-image" />
-                <Button onClick={() => navigate(`/blogs/detalle/${blog.id}`)}>Ver más</Button>
+                <p>{blog.nombre}</p>
+                <img
+                  src={blog.imagen_url}
+                  alt={blog.nombre}
+                  className="img-fluid card-image blog-image"
+                />
+                <p>{blog.descripcion}</p>
               </article>
+              <Button onClick={() => navigate(`/blogs/detalle/${blog._id}`)}>Ver detalles</Button>
             </section>
           </Col>
         ))}

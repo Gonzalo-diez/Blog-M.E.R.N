@@ -206,17 +206,17 @@ app.put("/blogs/actualizarBlog/:id", async (req, res) => {
 });
 
 // Método para borrar un blog
-app.delete("/blogs/borrarBlog/:id", (req, res) => {
+app.delete("/blogs/borrarBlog/:id", async (req, res) => {
     const blogId = req.params.id;
 
     try {
-        const result = Blog.deleteOne({ _id: blogId });
+        const result = await Blog.deleteOne({ _id: blogId });
 
         if (result.deletedCount === 0) {
-            return res.status(404).json({ error: "Producto no encontrado" });
+            return res.status(404).json({ error: "Blog no encontrado" });
         }
 
-        return res.json("Producto eliminado!");
+        return res.json("blog eliminado!");
     } catch (err) {
         return res.status(500).json({ error: "Error en la base de datos", details: err.message });
     }

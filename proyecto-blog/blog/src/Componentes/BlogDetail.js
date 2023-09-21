@@ -26,17 +26,17 @@ function BlogDetail() {
   }, [id]);
 
   if (!blog) {
-    return <p>Cargando...</p>; // Puedes mostrar un mensaje de carga mientras se obtiene el blog.
+    return <p>No existe este blog</p>; 
   }
 
   return (
     <Container>
       <Row className="justify-content-center">
         <Col md={8}>
-          <section>
+          <section className="detail-container">
             <article>
               <h2>{blog.nombre}</h2>
-              <img src={blog.imagen_url} alt={blog.nombre} />
+              <img src={blog.imagen_url} alt={blog.nombre} className="img-fluid card-image img-detail" />
               <p>{blog.descripcion}</p>
             </article>
           </section>

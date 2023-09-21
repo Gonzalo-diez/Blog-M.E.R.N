@@ -33,14 +33,24 @@ function Blog({ isAuthenticated }) {
         navigate(`/blogs/borrarBlog/${blogId}`)
     }
 
+    if (blogs.length === 0) {
+        return (
+          <Container>
+            <p className="text-center mt-4">No hay blogs</p>
+          </Container>
+        );
+    }
+
     return (
         <Container>
             {isAuthenticated && (
-                <Button onClick={handleAgregarBlog}>Agregar algún blog?</Button>
+                <div className="d-flex justify-content-center align-items-center mt-4">
+                    <Button onClick={handleAgregarBlog}>Agregar algún blog?</Button>
+                </div>
             )}
             <Row xs={1} md={2} lg={2} className="g-4">
                 {blogs.map((blog) => (
-                    <Col key={blog._id}>
+                    <Col key={blog._id} className="mt-5">
                         <section>
                             <article>
                                 <h2>{blog.nombre}</h2>
@@ -50,13 +60,12 @@ function Blog({ isAuthenticated }) {
                                     alt={blog.nombre}
                                     className="img-fluid card-image blog-image"
                                 />
-                                <p>{blog.descripcion}</p>
                             </article>
-                            <Button onClick={() => navigate(`/blogs/detalle/${blog._id}`)}>Ver detalles</Button>
+                            <Button onClick={() => navigate(`/blogs/detalle/${blog._id}`)} className="mt-2">Ver detalles</Button>
                             {isAuthenticated && (
                                 <div>
-                                    <Button variant="warning" onClick={() => handleActualizarBlog(blog._id)}>Actualizar</Button>
-                                    <Button variant="danger" onClick={() => handleEliminarBlog(blog._id)}>Eliminar</Button>
+                                    <Button variant="warning" onClick={() => handleActualizarBlog(blog._id)} className="mt-2">Actualizar</Button>
+                                    <Button variant="danger" onClick={() => handleEliminarBlog(blog._id)} className="mt-2">Eliminar</Button>
                                 </div>
                             )}
                         </section>

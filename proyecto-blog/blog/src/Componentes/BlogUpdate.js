@@ -17,7 +17,7 @@ function BlogUpdate({ isAuthenticated }) {
         const fetchBlog = async () => {
             try {
                 const response = await axios.get(`http://localhost:8800/blogs/detalle/${id}`);
-                const blog = response.data; // No es necesario [0] si esperas un solo objeto, no un arreglo de objetos
+                const blog = response.data;
         
                 if (!blog) {
                     console.error("Blog no encontrado");
