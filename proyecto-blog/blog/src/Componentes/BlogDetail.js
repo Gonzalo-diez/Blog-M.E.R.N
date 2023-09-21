@@ -15,9 +15,8 @@ function BlogDetail() {
           return;
         }
 
-        // Haciendo una solicitud GET al servidor para obtener el blog por su ID
         const res = await axios.get(`http://localhost:8800/blogs/detalle/${id}`);
-        setBlog(res.data); // Actualizando el estado con el blog obtenido
+        setBlog(res.data);
       } catch (err) {
         console.log(err);
       }

@@ -93,6 +93,7 @@ app.get("/", async (req, res) => {
     }
 });
 
+// Método para buscar blogs segun su categoria en mongodb
 app.get("/blogs/:categoria", async (req, res) => {
     const categoria = req.params.categoria;
 
@@ -105,7 +106,7 @@ app.get("/blogs/:categoria", async (req, res) => {
     }
 });
 
-
+// Método para buscar blogs segun su _id en mongodb
 app.get("/blogs/detalle/:id", async (req, res) => {
     const id = req.params.id;
 
@@ -124,7 +125,7 @@ app.get("/blogs/detalle/:id", async (req, res) => {
     }
 });
 
-
+// Método para agregar blogs
 app.post("/agregarBlogs", async (req, res) => {
     const {
         nombre,
@@ -143,15 +144,16 @@ app.post("/agregarBlogs", async (req, res) => {
 
         await nuevoBlog.save();
 
-        return res.json("Producto creado!!!");
+        return res.json("Blog creado!!!");
     } catch (err) {
-        console.error("Error al guardar el producto:", err);
+        console.error("Error al guardar el blog:", err);
         return res
             .status(500)
             .json({ error: "Error en la base de datos", details: err.message });
     }
 });
 
+// Método para realizar login
 app.post("/login", (req, res, next) => {
     const { correo_electronico, contrasena } = req.body;
 
@@ -175,7 +177,6 @@ app.post("/login", (req, res, next) => {
         });
     })(req, res, next);
 });
-
 
 // Método para actualizar un blog
 app.put("/blogs/actualizarBlog/:id", async (req, res) => {

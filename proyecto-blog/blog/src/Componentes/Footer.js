@@ -14,13 +14,13 @@ const Footer = () => {
                     <Col md={6}>
                         <ul className="list-unstyled d-flex justify-content-end mb-0">
                             <li className="mx-2">
-                                <Link to="/facebook" className="text-light">Facebook</Link> {/* Usar Link para enlace a Facebook */}
+                                <Link to="/facebook" className="text-light">Facebook</Link>
                             </li>
                             <li className="mx-2">
-                                <Link to="/twitter" className="text-light">Twitter</Link> {/* Usar Link para enlace a Twitter */}
+                                <Link to="/twitter" className="text-light">Twitter</Link>
                             </li>
                             <li className="mx-2">
-                                <Link to="/instagram" className="text-light">Instagram</Link> {/* Usar Link para enlace a Instagram */}
+                                <Link to="/instagram" className="text-light">Instagram</Link>
                             </li>
                         </ul>
                     </Col>
