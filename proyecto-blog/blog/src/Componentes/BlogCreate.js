@@ -10,7 +10,9 @@ function BlogCreate({ isAuthenticated }) {
   const [url, setUrl] = useState("");
   const navigate = useNavigate();
 
-  const handleAgregarBlog = async () => {
+  const handleAgregarBlog = async (e) => {
+    e.preventDefault();
+    
     if (!isAuthenticated) {
       console.log("Debes estar autenticado para agregar productos.");
       navigate("/login");
